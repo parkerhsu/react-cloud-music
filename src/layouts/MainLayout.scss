@@ -1,0 +1,42 @@
+@import '../style/variables';
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background:$theme_color;
+
+  .header-icon {
+    display: inline-block;
+    .icon {
+      width: 24px;
+      height: 24px;
+      color: #fff;
+    }
+  }
+  .title {
+    font-size: 20px;
+    line-height: 40px;
+    color: rgb(241, 241, 241);
+  }
+}
+
+.nav {
+  display: flex;
+  height: 44px;
+  background-color: $theme_color;
+  .nav-item {
+    flex: 1 1 0;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    &.selected {
+      font-weight: 700;
+      & > span {
+        border-bottom: 2px solid #fff;
+      }
+    }
+  }
+}

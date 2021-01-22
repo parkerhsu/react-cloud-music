@@ -12,7 +12,7 @@ const SuspenseComponent = Component => props => {
 
 const RecommendComponent = lazy(() => import('../application/Recommend'))
 const SingerComponent = lazy(() => import('../application/Singer'))
-const RankComponent = lazy(() => import('../application/Recommend'))
+const RankComponent = lazy(() => import('../application/Rank'))
 
 export default [
   {
