@@ -1,34 +1,43 @@
-import React from 'react';
-import {Redirect} from 'react-router-dom';
-import Home from '../application/Home/Home';
-import Singers from '../application/Singers/Singers';
-import Recommend from '../application/Recommend/Recommend';
-import Rank from '../application/Rank/Rank';
+import React, { lazy, Suspense } from 'react'
+import { Redirect } from 'react-router-dom'
+import MainLayout from '../layouts/MainLayout'
+
+const SuspenseComponent = Component => props => {
+  return (
+    <Suspense fallback={null}>
+      <Component {...props}></Component>
+    </Suspense>
+  )
+}
+
+const RecommendComponent = lazy(() => import('../application/Recommend'))
+const SingerComponent = lazy(() => import('../application/Singer'))
+const RankComponent = lazy(() => import('../application/Recommend'))
 
 export default [
-    {
+  {
+    component: MainLayout,
+    routes: [
+      {
         path: '/',
-        component: Home,
-        routes: [
-            {
-                path: '/',
-                exact: true,
-                render: () => (
-                    <Redirect to={"/recommend"}/>
-                )
-            },
-            {
-                path: '/recommend',
-                component: Recommend,
-            },
-            {
-                path: '/singers',
-                component: Singers,
-            },
-            {
-                path: '/rank',
-                component: Rank,
-            }
-        ]
-    }
+        exact: true,
+        render: () => <Redirect to={'/recommend'}/>
+      },
+      {
+        path: '/recommend',
+        component: SuspenseComponent(RecommendComponent),
+        key: 'recommend'
+      },
+      {
+        path: '/singer',
+        component: SuspenseComponent(SingerComponent),
+        key: 'singer'
+      },
+      {
+        path: '/rank',
+        component: SuspenseComponent(RankComponent),
+        key: 'rank'
+      }
+    ]
+  }
 ]
