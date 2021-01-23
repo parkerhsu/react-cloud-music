@@ -1,0 +1,30 @@
+@import '../../style//variables';
+
+.slider-container {
+  position: relative;
+  box-sizing: border-box;
+  background-color: #fff;
+  .slider-padding {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background: $theme_color;
+    z-index: 1;
+  }
+  .swiper-container {
+    position: relative;
+    width: 98%;
+    height: 160px;
+    margin: auto;
+    border-radius: 6px;
+    .swiper-item {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-pagination-bullet-active{
+      background: $theme_color;
+    }
+  }
+}
