@@ -9,6 +9,7 @@ Swiper.use([Pagination])
 function Slider(props) {
   const [sliderSwiper, setSliderSwiper] = useState(null)
   const { bannerList } = props
+  console.log('bannderList', bannerList)
 
   useEffect(() => {
     if (bannerList.length && !sliderSwiper) {
@@ -22,7 +23,7 @@ function Slider(props) {
       })
       setSliderSwiper(swiper)
     }
-  }, [bannerList.length, sliderSwiper])
+  }, [bannerList.length])
 
   return (
     <div className="slider-container">
@@ -32,7 +33,7 @@ function Slider(props) {
         <div className="swiper-wrapper">
             {
               bannerList.map((slider, index) => (
-                <div className='swiper-slide' key={index}>
+                <div className='swiper-slide' key={slider.imageUrl}>
                   <img className='swiper-item' src={slider.imageUrl} width='100%' height='100%'/>
                 </div>
               ))
