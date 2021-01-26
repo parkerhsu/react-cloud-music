@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'http://localhost:3300'
+const baseURL = 'http://47.98.159.95/m-api'
 
 const axiosInstance = axios.create({
   baseURL

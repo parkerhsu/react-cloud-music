@@ -1,6 +1,8 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import BScroll from 'better-scroll'
+import Loading from '../../components/Loading'
+import { throttle } from '../../utils'
 import './index.scss'
 
 const Scroll = forwardRef((props, ref) => {
@@ -9,6 +11,10 @@ const Scroll = forwardRef((props, ref) => {
 
   const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props
   const { onScroll, pullUp, pullDown } = props
+
+  const pullUpDebounce = useMemo(() => {
+    return throttle(pullUp, 300)
+  }, [pullUp])
 
   //初始化
   useEffect(() => {
@@ -51,7 +57,7 @@ const Scroll = forwardRef((props, ref) => {
     if (!bScroll || !pullUp) return
     bScroll.on('scrollEnd', () => {
       if (bScroll.y <= bScroll.maxScrollY + 100) {
-        pullUp()
+        pullUpDebounce()
       }
     })
 
@@ -85,10 +91,14 @@ const Scroll = forwardRef((props, ref) => {
     }
   }))
 
+  const pullUpDisplayStyle = pullUpLoading ? { display: '' } : { display: 'none' }
+
   return (
     <div className="scroll-container" ref={scrollContainerRef}>
       { props.children }
-      <div className="pull-up-loading"></div>
+      <div className="pull-up-loading" style={pullUpDisplayStyle}>
+        <Loading />
+      </div>
       <div className="pull-down-loading"></div>
     </div>
   )
@@ -108,7 +118,7 @@ Scroll.defaultProps = {
 }
 
 Scroll.propTypes = {
-  direction: PropTypes.oneOf(['vertical', 'horizental']),
+  direction: PropTypes.oneOf(['vertical', 'horizontal']),
   refresh: PropTypes.bool,
   onScroll: PropTypes.func,
   pullUp: PropTypes.func,

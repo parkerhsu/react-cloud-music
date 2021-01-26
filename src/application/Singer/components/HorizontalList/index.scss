@@ -1,0 +1,28 @@
+@import '../../../../style/variables';
+
+.list-wrapper {
+  .list {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    .list-title {
+      flex: 0 0 auto;
+      margin-right: 2px;
+      color: gray;
+      font-size: 14px;
+    }
+    .list-item {
+      flex: 0 0 auto;
+      padding: 5px;
+      border-radius: 10px;
+      font-size: 14px;
+      
+      &.selected {
+        border: 1px solid $theme_color;
+        color: $theme_color;
+        opacity: .8;
+      }
+    }
+  }
+}

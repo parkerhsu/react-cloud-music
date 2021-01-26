@@ -1,0 +1,40 @@
+.singer-content {
+  position: fixed;
+  top: 94px;
+  width: 100%;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+.singer-list-wrapper {
+  overflow: hidden;
+  position: fixed;
+  top: 160px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .singer-list-item {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    padding: 5px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(228, 228, 228);
+
+    .lazyload-wrapper {
+      margin-right: 20px;
+    }
+
+    & > img {
+      margin-right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 3px;
+    }
+    & > span {
+      font-size: 14px;
+      color: rgb(46, 48, 48);
+      font-weight: 500;
+    }
+  }
+}
