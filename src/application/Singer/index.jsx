@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import HorizontalList from './components/HorizontalList'
 import Scroll from '../../components/Scroll'
+import Loading from '../../components/Loading'
 import { categoryTypes, alphaTypes } from '../../api/config'
 import { getHotSingerListRequest, getSingerListRequest } from '../../api/request'
 import LazyLoad, { forceCheck } from 'react-lazyload'
@@ -12,10 +13,12 @@ export default function Singers() {
   const [singerList, setSingerList] = useState([])
   const [pageCount, setPageCount] = useState(0)
   const [pullUpLoading, setPullUpLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     getHotSingerListRequest(0).then(data => {
       setSingerList(data.artists)
+      setLoading(false)
     })
   }, [])
 
@@ -61,8 +64,8 @@ export default function Singers() {
         <Scroll pullUp={handlePullUp} pullUpLoading={pullUpLoading} onScroll={forceCheck}>
           <ul className="singer-list">
             {
-              singerList.map(item => (
-                <li className="singer-list-item" key={item.name}>
+              singerList.map((item, key) => (
+                <li className="singer-list-item" key={key}>
                   <LazyLoad 
                     placeholder={<img src={require('../../assets/music.png')} width='50px' height='50px'/>}
                   >
@@ -73,6 +76,7 @@ export default function Singers() {
               ))
             }
           </ul>
+          { loading ? <Loading /> : null }
         </Scroll>
       </div>
     </section>

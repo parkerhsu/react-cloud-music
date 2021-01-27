@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const baseURL = 'http://47.98.159.95/m-api'
+const LocalServer = 'http://localhost:3300'
+const RemoteServer = 'http://47.98.159.95/m-api'
+
+const baseURL = LocalServer
 
 const axiosInstance = axios.create({
   baseURL

@@ -21,17 +21,21 @@ function Recommend(props) {
     }
   }, [])
 
+  useEffect(() => {
+    console.log(enterLoading)
+  })
+
   const bannerListJS = bannerList ? bannerList.toJS() : []
   const recommendListJS = recommendList ? recommendList.toJS() : []
 
   return(
     <section className='content'>
-      { enterLoading ? <Loading /> : null }
       <Scroll onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerListJS}/>
           <RecommendList recommendList={recommendListJS}/>
         </div>
+        { enterLoading ? <Loading /> : null }
       </Scroll>
     </section>
   );
@@ -40,7 +44,7 @@ function Recommend(props) {
 const matchStateToProps = state => ({
   bannerList: state.getIn(['recommend', 'bannerList']),
   recommendList: state.getIn(['recommend', 'recommendList']),
-  enterLoading: state.getIn(['recommend', 'enderLoading'])
+  enterLoading: state.getIn(['recommend', 'enterLoading'])
 })
 
 const matchDispatchToProps = dispatch => ({
