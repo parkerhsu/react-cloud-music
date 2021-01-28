@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import Scroll from '../../components/Scroll'
 import Loading from '../../components/Loading'
 import { getRankListRequest } from '../../api/request'
+import { renderRoutes } from 'react-router-config'
 import './index.scss'
 
 const filterIndex = rankList => {
@@ -13,9 +15,10 @@ const filterIndex = rankList => {
   return 0
 }
 
-export default function Rank() {
+export default function Rank(props) {
   const [rankList, setRankList] = useState([])
   const [loading, setLoading] = useState(true)
+  const history = useHistory()
 
   useEffect(() => {
     getRankListRequest().then(data => {
@@ -38,11 +41,15 @@ export default function Rank() {
     return loading ? { 'display': 'none' } : { 'display': '' }
   }, [loading])
 
+  const handleEnterDetail = (id) => {
+    history.push(`/rank/${id}`)
+  }
+
   const renderOfficialList = (list) => (
     <ul className="official-list">
       {
         list.map(item => (
-          <li className="list-item" key={item.id}>
+          <li className="list-item" key={item.id} onClick={() => handleEnterDetail(item.id)}>
             <div className="img-wrapper">
               <img src={`${item.coverImgUrl}?param=300*300`}/>
               <div className="decorate"></div>
@@ -65,7 +72,7 @@ export default function Rank() {
     <ul className="global-list">
       {
         list.map(item => (
-          <li className="list-item" key={item.id}>
+          <li className="list-item" key={item.id} onClick={() => handleEnterDetail(item.id)}>
             <div className="img-wrapper">
               <img src={`${item.coverImgUrl}?param=300*300`}/>
               <span>{item.updateFrequency}</span>
@@ -87,6 +94,7 @@ export default function Rank() {
           { loading ? <Loading /> : null }
         </div>
       </Scroll>
+      { renderRoutes(props.route.routes) }
     </section>
   );
 }

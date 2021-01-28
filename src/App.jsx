@@ -4,6 +4,7 @@ import { renderRoutes } from 'react-router-config';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/index';
+//import './assets/font/iconfont'
 
 function App() {
   return (

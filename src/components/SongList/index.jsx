@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react'
 import PropType from 'prop-types'
-import SvgIcon from '../../components/SvgIcon'
+import Icon from '../GlobalIcon'
 import { getSongAuthor } from '../../utils'
+import Scroll from '../Scroll'
 import './index.scss'
 
 function SongList(props) {
@@ -22,13 +23,17 @@ function SongList(props) {
   return (
     <div className="song-list-wrapper">
       <div className="song-list-header">
-        <SvgIcon type='icon-xiayiqu'/>
+        <Icon type='icon-xiayiqu'/>
         <span>播放全部</span>
         <span className='count-text'>{`(共${songList && songList.length}首)`}</span>
       </div>
-      <ul className="song-list">
-        { songList && renderSongList(songList) }
-      </ul>
+      <div className="song-list-container">
+        <Scroll>
+          <ul className="song-list">
+            { songList && renderSongList(songList) }
+          </ul>
+        </Scroll>
+      </div>
     </div>
   )
 }

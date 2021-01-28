@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import SvgIcon from '../components/SvgIcon'
+import Icon from '../components/GlobalIcon'
 import './MainLayout.scss'
 
 function MainLayout(props) {
@@ -12,11 +12,11 @@ function MainLayout(props) {
     <main>
       <header className="header">
         <span className='header-icon' onClick={() => alert('正在努力开发中...')}>
-          <SvgIcon type='icon-gengduo'/>
+          <Icon type='icon-gengduo'/>
         </span>
         <NavLink className='title' to='/'>网易云音乐</NavLink>
         <span className='header-icon' onClick={() => history.push('/search')}>
-          <SvgIcon type='icon-sousuo'/>
+          <Icon type='icon-sousuo'/>
         </span>
       </header>
 
