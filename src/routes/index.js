@@ -13,6 +13,7 @@ const SuspenseComponent = Component => props => {
 const RecommendComponent = lazy(() => import('../application/Recommend'))
 const SingerComponent = lazy(() => import('../application/Singer'))
 const RankComponent = lazy(() => import('../application/Rank'))
+const AlbumComponent = lazy(() => import('../application/Album'))
 
 export default [
   {
@@ -21,12 +22,18 @@ export default [
       {
         path: '/',
         exact: true,
-        render: () => <Redirect to={'/recommend'}/>
+        render: () => <Redirect to={'/recommend'}/>,
       },
       {
         path: '/recommend',
         component: SuspenseComponent(RecommendComponent),
-        key: 'recommend'
+        key: 'recommend',
+        routes: [
+          {
+            path: '/recommend/:id',
+            component: SuspenseComponent(AlbumComponent)
+          }
+        ]
       },
       {
         path: '/singer',

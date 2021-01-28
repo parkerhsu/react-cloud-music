@@ -1,0 +1,138 @@
+.album-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  z-index: 1000;
+  transform-origin: right bottom;
+
+  &.fly-enter, &.fly-appear {
+    transform: rotateZ (30deg) translate3d (100%, 0, 0);
+  }
+  &.fly-enter-active, &.fly-appear-active {
+    transition: transform .3s;
+    transform: rotateZ (0deg) translate3d (0, 0, 0);
+  }
+  &.fly-exit {
+    transform: rotateZ (0deg) translate3d (0, 0, 0);
+  }
+  &.fly-exit-active {
+    transition: transform .3s;
+    transform: rotateZ (30deg) translate3d (100%, 0, 0);
+  }
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 275px;
+    background-size: 100% 100%;
+    filter: blur(20px);
+    z-index: -1;
+    .filter {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(7, 17, 27, .2);
+    }
+  }
+
+  .album-header {
+    position: fixed;
+    top: 0;
+    padding-left: 5px;
+    width: 100%;
+    line-height: 40px;
+    color: #fff;
+
+    .icon {
+      font-size: 20px;
+    }
+    & > span {
+      margin-left: 5px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  .album-info-wrapper {
+    position: relative;
+    width: 100%;
+    height: 275px;
+    padding: 0 20px 50px;
+    box-sizing: border-box;
+    
+    .album-info {
+      display: flex;
+      margin-top: 50px;
+      .img-wrapper {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+        .decorate {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 35px;
+          background: linear-gradient(rgba(110, 110, 110, 0.4), rgba(255, 255, 255, 0));
+          border-radius: 3px;
+        }
+        .play-count {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          font-size: 10px;
+          color: rgb(241, 241, 241);
+        }
+      }
+      .album-desc {
+         margin: 5px 0 0 20px;
+        .album-name {
+          display: block;
+          height: 70px;
+          color: rgb(241, 241, 241);
+          line-height: 1.5;
+          font-size: 16px;
+          font-weight: 700;
+          text-overflow: ellipsis;
+        }
+        .album-creator {
+          margin-top: 15px;
+          & > img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+          }
+          & > span {
+            margin-left: 5px;
+            line-height: 20px;
+            font-size: 14px;
+            color: rgb(187, 168, 168);
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    .album-btns {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px 0;
+      .album-btn {
+        display: flex;
+        flex-direction: column;
+        line-height: 20px;
+        font-size: 12px;
+        text-align: center;
+        color: rgb(241, 241, 241);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .album-list-wrapper {
+
+  }
+}

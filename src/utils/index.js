@@ -8,6 +8,10 @@ export const getCount = (count) => {
   }
 }
 
+export function getSongAuthor(ar) {
+  return ar.map(a => a.name).join('/')
+}
+
 export function throttle(fn, delay) {
   let can = true
   return (...args) => {

@@ -6,6 +6,7 @@ import Scroll from '../../components/Scroll'
 import { connect } from 'react-redux'
 import * as actions from './store/action'
 import { forceCheck } from 'react-lazyload'
+import { renderRoutes } from 'react-router-config'
 import './index.scss'
 
 function Recommend(props) {
@@ -21,15 +22,11 @@ function Recommend(props) {
     }
   }, [])
 
-  useEffect(() => {
-    console.log(enterLoading)
-  })
-
   const bannerListJS = bannerList ? bannerList.toJS() : []
   const recommendListJS = recommendList ? recommendList.toJS() : []
 
   return(
-    <section className='content'>
+    <section className='recommend-content'>
       <Scroll onScroll={forceCheck}>
         <div>
           <Slider bannerList={bannerListJS}/>
@@ -37,6 +34,7 @@ function Recommend(props) {
         </div>
         { enterLoading ? <Loading /> : null }
       </Scroll>
+      {renderRoutes(props.route.routes)}
     </section>
   );
 }

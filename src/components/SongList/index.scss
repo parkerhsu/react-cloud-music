@@ -1,0 +1,44 @@
+.song-list-wrapper {
+  margin-top: -100px;
+  border-radius: 10px;
+  background-color: #fff;
+  .song-list-header {
+    margin-left: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    line-height: 1.5;
+    .count-text {
+      margin-left: 5px;
+      font-size: 12px;
+      color: rgb(187, 168, 168);
+    }
+  }
+  .song-list {
+    .song-item {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      .index {
+        width: 60px;
+        text-align: center;
+      }
+      .song-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        padding: 5px 0;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgb(228, 228, 228);
+        .name {
+          color: rgb(46, 48, 48);
+        }
+        .author {
+          font-size: 12px;
+          color: rgb(187, 168, 168);
+        }
+      }
+    }
+  }
+}

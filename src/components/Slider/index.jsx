@@ -9,7 +9,6 @@ Swiper.use([Pagination])
 function Slider(props) {
   const [sliderSwiper, setSliderSwiper] = useState(null)
   const { bannerList } = props
-  console.log('bannderList', bannerList)
 
   useEffect(() => {
     if (bannerList.length && !sliderSwiper) {
