@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import HorizontalList from './components/HorizontalList'
 import Scroll from '../../components/Scroll'
 import Loading from '../../components/Loading'
 import { categoryTypes, alphaTypes } from '../../api/config'
 import { getHotSingerListRequest, getSingerListRequest } from '../../api/request'
 import LazyLoad, { forceCheck } from 'react-lazyload'
+import { renderRoutes } from 'react-router-config'
 import './index.scss'
 
-export default function Singers() {
+export default function Singers(props) {
   const [category, setCategory] = useState('')
   const [alpha, setAlpha] = useState('')
   const [singerList, setSingerList] = useState([])
   const [pageCount, setPageCount] = useState(0)
   const [pullUpLoading, setPullUpLoading] = useState(false)
   const [loading, setLoading] = useState(true)
+  const history = useHistory()
 
   useEffect(() => {
     getHotSingerListRequest(0).then(data => {
@@ -65,7 +68,7 @@ export default function Singers() {
           <ul className="singer-list">
             {
               singerList.map((item, key) => (
-                <li className="singer-list-item" key={key}>
+                <li className="singer-list-item" key={key} onClick={() => history.push(`/singer/${item.id}`)}>
                   <LazyLoad 
                     placeholder={<img src={require('../../assets/music.png')} width='50px' height='50px'/>}
                   >
@@ -79,6 +82,7 @@ export default function Singers() {
           { loading ? <Loading /> : null }
         </Scroll>
       </div>
+      { renderRoutes(props.route.routes) }
     </section>
   );
 }

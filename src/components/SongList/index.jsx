@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import PropType from 'prop-types'
 import Icon from '../GlobalIcon'
 import { getSongAuthor } from '../../utils'
 import Scroll from '../Scroll'

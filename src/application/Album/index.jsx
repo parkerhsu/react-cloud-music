@@ -6,6 +6,7 @@ import { getCount } from '../../utils'
 import SongList from '../../components/SongList'
 import { getAlbumDetailRequest } from '../../api/request'
 import Loading from '../../components/Loading'
+import Header from '../../components/Header'
 import './index.scss'
 
 function Album() {
@@ -13,7 +14,6 @@ function Album() {
   const [showStatus, setShowStatus] = useState(true)
   const [albumInfo, setAlbumInfo] = useState({})
   const [loading, setLoading] = useState(true)
-  const history = useHistory()
 
   useEffect(() => {
     getAlbumDetailRequest(id).then(data => {
@@ -21,10 +21,6 @@ function Album() {
       setLoading(false)
     })
   }, [])
-
-  const handleGoBack = () => {
-    history.goBack()
-  }
 
   return (
     <CSSTransition
@@ -38,10 +34,7 @@ function Album() {
         <div className="background" style={{backgroundImage: `url(${albumInfo.coverImgUrl})`}}>
           <div className="filter"></div>
         </div>
-        <header className='album-header'>
-          <Icon type='icon-zuojiantou' onClick={handleGoBack}/>
-          <span>歌单</span>
-        </header>
+        <Header title='歌单'/>
         <div className="album-info-wrapper">
           <div className="album-info">
             <div className="img-wrapper">

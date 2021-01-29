@@ -1,3 +1,4 @@
+import axios from 'axios'
 import axiosInstance from './axios'
 
 export const getBannerRequest = () => {
@@ -23,3 +24,7 @@ export const getRankListRequest = () => {
 export const getAlbumDetailRequest = id => {
   return axiosInstance.get (`/playlist/detail?id=${id}`);
 };
+
+export const getSinderDetailRequest = id => {
+  return axiosInstance.get(`/artists?id=${id}`)
+}
