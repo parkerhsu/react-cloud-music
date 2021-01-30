@@ -1,0 +1,5 @@
+@mixin border($direction: 'bottom', $border-size: 1px, $border-color: #ccc) {
+  &::after {
+    border-#{$direction}: $border-size solid $border-color
+  }
+}

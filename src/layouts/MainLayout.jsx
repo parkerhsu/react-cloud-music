@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import Icon from '../components/GlobalIcon'
+import Player from '../application/Player'
 import './MainLayout.scss'
 
 function MainLayout(props) {
@@ -32,6 +33,7 @@ function MainLayout(props) {
         </NavLink>
       </nav>
       { renderRoutes(route.routes) }
+      <Player />
     </main>
   )
 }

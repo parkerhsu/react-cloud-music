@@ -1,0 +1,73 @@
+@import '../../../../style/variables';
+
+.miniplayer-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(32,33,36,.28);
+  z-index: 10000;
+  .song-info {
+    flex: 1;
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    padding-left: 20px;
+    .song-pic {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    .text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      height: 30px;
+      margin-left: 10px;
+      .name {
+        font-size: 14px;
+      }
+      .author {
+        font-size: 12px;
+        color: rgb(187, 168, 168);
+      }
+    }
+  }
+
+  .btn-wrapper {
+    flex: 0 0 100px;
+    display: flex;
+    color: $theme_color;
+    .iconfont {
+      font-size: 30px;
+    }
+    .player-btn {
+      padding: 0 10px;
+    }
+    .list-btn {
+      padding: 0 10px;
+    }
+  }
+}
+
+//animation
+.mini-enter {
+  transform: translate3d(0, 100%, 0);
+}
+
+.mini-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition: all .4s;
+}
+
+.mini-exit-active {
+  transform: translate3d(0, 100%, 0);
+  transition: all .4s;
+}
