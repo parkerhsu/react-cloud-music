@@ -12,9 +12,7 @@ const currentSong = {
 function Player(props) {
   const [fullScreen, setFullScreen] = useState(false)
 
-  const toggleFullscreen = useCallback((v) => {
-    setFullScreen(v)
-  }, [])
+  const toggleFullscreen = (v) => setFullScreen(v)
 
   return (
     <section className='player-content'>

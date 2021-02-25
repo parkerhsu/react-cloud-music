@@ -1,6 +1,15 @@
 @import '../../../../style/variables';
 @import '../../../../style/mixins';
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .normal-player-wrapper {
   position: fixed;
   top: 0;
@@ -79,6 +88,7 @@
           height: 68%;
           border-radius: 50%;
         }
+        animation: rotate 20s linear infinite;
       }
       .current-lyric {
         margin-top: 1.5em;
@@ -107,4 +117,26 @@
       }
     }
   }
+}
+
+.normal-enter, .normal-exit-done {
+  .player-header {
+    transform: translate3d(0, -100px, 0);
+  }
+  .player-footer {
+    transform: translate3d(0, 100px, 0);
+  }
+}
+
+.normal-enter-active, .normal-exit-active {
+  .player-header, .player-footer {
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s cubic-bezier(0.86, 0.18, 0.82, 1.32);
+  }
+  opacity: 1;
+  transition: all .4s;
+}
+
+.normal-exit-active {
+  opacity: 0;
 }
